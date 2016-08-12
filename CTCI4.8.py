@@ -60,4 +60,4 @@ if __name__ == "__main__":
     my_list = range(10000)
     BST = sorted_array_to_BST(my_list)
     print "BST built"
-    print get_all_paths_to_sum_from_tree(BST, 8808)
+    print get_all_paths_to_sum_from_tree(BST, 8807)
