@@ -13,4 +13,5 @@ def find_number_of_paths(N, i=0, j=0): # find number of paths for an NxN grid st
 
 
 if __name__ == "__main__":
-    print find_number_of_paths(13)
+    for i in range(13):
+        print "A/An " + str(i+1) + "x" + str(i+1) + " grid has " + str(find_number_of_paths(i+1)) + " total path/s."
