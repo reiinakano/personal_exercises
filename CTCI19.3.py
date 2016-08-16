@@ -1,7 +1,8 @@
 def compute_trailing_zeros(n):
     number_of_twos = 0
     number_of_fives = 0
-    if n == 0: return 0
+    if n < 0: return "Invalid"
+    elif n == 0: return 0
     for factor in xrange(1,n+1):
         current = factor
         while current % 2 == 0:
