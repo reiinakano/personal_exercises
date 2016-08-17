@@ -1,5 +1,6 @@
 # I used recursion to solve this problem. Using iteration seems more appropriate though. Python hits recursion limit for some
 # five letter words and most six letter words.
+# I have an iterative version of this code. It's much better.
 import enchant
 import string
 
