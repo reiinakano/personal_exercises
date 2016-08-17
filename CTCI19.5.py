@@ -25,3 +25,5 @@ def process(solution, guess):
 
 if __name__ == "__main__":
     process("rggb", "grrb")
+
+
