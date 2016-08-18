@@ -46,7 +46,7 @@ def convert_word(original, target, dictionary, words_used={}):
 
 if __name__ == "__main__":
     d = enchant.Dict("en_US")
-    print convert_word("trick", "start", d)
+    print convert_word("strives", "farting", d)
 
 
 # Can I just say I love playing with this algorithm
