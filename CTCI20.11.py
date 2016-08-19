@@ -58,7 +58,7 @@ def determine_max_subsquare(array):
 
 
 if __name__ == "__main__":
-    array_size = 8
+    array_size = 20
     my_array = []
 
     for i in range(array_size):
@@ -84,12 +84,18 @@ if __name__ == "__main__":
     size, row_and_top = determine_max_subsquare(my_array)
     print "Max subsquare of size " + str(size) + " at row " + str(row_and_top[0]) + " and corners " + str(row_and_top[1]) + " and " + str(row_and_top[2])
 
-    for row in my_array:
+    for index_row, row in enumerate(my_array):
         to_print = ""
-        for column in row:
+        for index_column, column in enumerate(row):
             if column:
-                
-                to_print += "x "
+                if index_row == row_and_top[0] and row_and_top[1] <= index_column <= row_and_top[2]:
+                    to_print += "O "
+                elif index_row == row_and_top[0] + size - 1 and row_and_top[1] <= index_column <= row_and_top[2]:
+                    to_print += "O "
+                elif row_and_top[0] <= index_row <= row_and_top[0] + size - 1 and (index_column == row_and_top[1] or index_column == row_and_top[2]):
+                    to_print += "O "
+                else:
+                    to_print += "x "
             else:
                 to_print += "- "
         print to_print
