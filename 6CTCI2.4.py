@@ -41,5 +41,5 @@ if __name__ == "__main__":
     a.next.next.next.next.next = LinkedListNode(5)
     a.next.next.next.next.next.next = LinkedListNode(6)
     print a
-    b = partition_around_x(a, 3)
+    b = partition_around_x(a, 4)
     print b
