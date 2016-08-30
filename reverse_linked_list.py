@@ -2,15 +2,17 @@ class LinkedListNode:
     def __init__(self, value):
         self.value = value
         self.next = None
+
     def add(self, node):
         self.next = node
+
     def __repr__(self):
         a = self
         to_print = [a.value]
         while a.next:
             to_print.append(a.next.value)
             a = a.next
-        return str(to_print)
+        return "Linked list (head->tail) " + str(to_print)
 
 
 def reverse_LL(head):
