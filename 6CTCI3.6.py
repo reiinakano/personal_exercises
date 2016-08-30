@@ -9,6 +9,7 @@ class Animal:
             self.type = "cat"
         else:
             self.type = "dog"
+        self.timestamp = None
 
     def __repr__(self):
         return self.type
@@ -17,57 +18,41 @@ class AnimalQueue():
     def __init__(self):
         self.cat_queue = deque()
         self.dog_queue = deque()
-        self.cat_dog_q = deque()
-        self.cats_given = 0
-        self.dogs_given = 0
+        self.time = 0
 
     def __repr__(self):
-        return " ".join([self.cat_queue.__repr__(), self.dog_queue.__repr__(), self.cat_dog_q.__repr__()])
+        return " ".join([self.cat_queue.__repr__(), self.dog_queue.__repr__()])
 
     def enqueue(self, animal):
+        animal.timestamp = self.time
+        self.time += 1
         if animal.type == "cat":
             self.cat_queue.append(animal)
-            self.cat_dog_q.append(animal)
         else:
             self.dog_queue.append(animal)
-            self.cat_dog_q.append(animal)
-
-    def helper_clean(self):
-        while self.cats_given > 0 and self.cat_dog_q[0].type == "cat":
-            self.cat_dog_q.popleft()
-            self.cats_given -= 1
-        while self.dogs_given > 0 and self.cat_dog_q[0].type == "dog":
-            self.cat_dog_q.popleft()
-            self.dogs_given -= 1
 
     def dequeue_any(self):
-        self.helper_clean()
-        if not self.cat_dog_q:
+        if not self.cat_queue and not self.dog_queue:
             return None
-        if self.cat_dog_q[0].type == "cat":
-            self.cat_queue.popleft()
+        elif not self.cat_queue:
+            return self.dog_queue.popleft()
+        elif not self.dog_queue:
+            return self.cat_queue.popleft()
         else:
-            self.dog_queue.popleft()
-        return self.cat_dog_q.popleft()
+            print "Comparing " + str(self.cat_queue[0].timestamp) + " and " + str(self.dog_queue[0].timestamp)
+            if self.cat_queue[0].timestamp > self.dog_queue[0].timestamp:
+                return self.dog_queue.popleft()
+            else:
+                return self.cat_queue.popleft()
 
     def dequeue_cat(self):
-        self.helper_clean()
         if not self.cat_queue:
             return None
-        if self.cat_dog_q[0].type == "dog":
-            self.cats_given += 1
-        else:
-            self.cat_dog_q.popleft()
         return self.cat_queue.popleft()
 
     def dequeue_dog(self):
-        self.helper_clean()
         if not self.dog_queue:
             return None
-        if self.cat_dog_q[0].type == "cat":
-            self.dogs_given += 1
-        else:
-            self.cat_dog_q.popleft()
         return self.dog_queue.popleft()
 
 
@@ -96,21 +81,11 @@ if __name__ == "__main__":
     print a
     a.dequeue_any()
     print a
-    a.dequeue_cat()
+    a.dequeue_any()
     print a
-    a.dequeue_cat()
+    a.dequeue_any()
     print a
-    a.dequeue_cat()
-    print a
-    a.dequeue_cat()
-    print a
-    a.dequeue_cat()
-    print a
-    a.dequeue_cat()
-    print a
-    a.dequeue_dog()
-    print a
-    a.dequeue_dog()
+    a.dequeue_any()
     print a
     a.dequeue_any()
     print a
