@@ -1,3 +1,5 @@
+#### THIS IS A BAD SOLUTION
+### USING A TIMESTAMP IS MUCH BETTER
 from collections import deque
 
 
