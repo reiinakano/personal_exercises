@@ -1,5 +1,5 @@
 # personal_exercises
-These are short scripts I wrote for practicing software engineering interviews.
+These are short scripts I write for practicing software engineering interviews.
 
 The files here are a mix of:
 
